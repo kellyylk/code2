@@ -1,40 +1,70 @@
-//code2 Bryan - sketch1
-//store positions, colors, active
-//final before int does not make the number change (used in java)
+//sorry bryan I didn't know how to make array classes ;(
 
-final int COLS = 20;
-final int ROWS = 20;
-int w = 800;
-int h = 800;
-final int CELLSIZE = w/COLS;
+// create two constant integers to store how many columns and rows the grid will have
+final int COLS = 25;
+final int ROWS = 25;
 
-PVector[][] pos = new PVector[COLS][ROWS];
-color [][] colors = new color[COLS][ROWS];
+// create 2d arrays to store positions, a visibility boolean, and colors for each cell in the grid
+PVector[][] positions = new PVector[COLS][ROWS];
 boolean[][] isActive = new boolean[COLS][ROWS];
+color[][] colors = new color[COLS][ROWS];
 
+// create but don't assign a cellsize variable, we'll do that in setup()
+int cellSize;
+
+Brush b;
+ArrayList <Brush> myBrush;
 
 void setup() {
-  size(800, 800);
-  for(int i = 0 ; i < COLS; i++) {
-    for(int j = 0; j < ROWS; j++) {
-      pos[i][j] = new PVector(i * CELLSIZE, j * CELLSIZE);
-      colors[i][j] = color(random(255), random(255), random(255));
-      isActive[i][j] = false;
-    }      
-  }
+  size(600, 600);
+  background(255);
   noStroke();
-}
-void draw() {
+  b = new Brush();
+  myBrush = new ArrayList<Brush>();
+  
+  
+  // set the size to create evenly spaced cells in the grid
+  cellSize = width/COLS;
+
+  // loop through the arrays to assign initial values
   for (int i = 0; i < COLS; i++) {
     for (int j = 0; j < ROWS; j++) {
-      if (mouseX > pos[i][j].x && mouseX < pos[i][j].x + CELLSIZE && 
-      mouseY > pos[i][j].y && mouseY < pos[i][j].y + CELLSIZE) {
-      isActive[i][j] = true;
-    }
+      positions[i][j] = new PVector(i * cellSize, j * cellSize);
+      isActive[i][j] = false;
+      colors[i][j] = color(random(255), random(255), random(255));
+    } 
+  }
+}
+
+void draw() {
+  // once per frame, loop through all the arrays.
+  // if the isActive boolean is true, then fill() with that cell's color and draw a rectangle.
+  // if the isActive boolean is false, then check the position against the mouse.
+  // if the mouse is inside the cell, then change the isActive boolean to true.
+  for (int i = 0; i < COLS; i++) {
+    for (int j = 0; j < ROWS; j++) {
+      b.position();
+      b.colour();
+      b.bool();
+      
       if (isActive[i][j]) {
-      fill(colors[i][j]);
-      rect(pos[i][j].x, pos[i][j].y, CELLSIZE, CELLSIZE);
+        fill(colors[i][j]);
+        rect(positions[i][j].x, positions[i][j].y, cellSize, cellSize);
+      } else {
+        if (mouseX > positions[i][j].x && mouseX < positions[i][j].x + cellSize && 
+          mouseY > positions[i][j].y && mouseY < positions[i][j].y + cellSize) {
+          isActive[i][j] = true;
+        }
+      }
     }
   }
+}
+
+class Brush {
+  void position() {
+  }
+  void colour() {
+  }
+  void bool() {
   }
 }
