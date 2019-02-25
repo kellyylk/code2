@@ -52,7 +52,6 @@ void draw() {
   
 
   for (int i= 0; i< b1.size(); i++) {
-    //call object 1 by 1 and stores it as a local object
     AngryBrick angryBrick = b1.get(i);
     if (angryBrick.active) {
       angryBrick.display();
@@ -62,7 +61,6 @@ void draw() {
     }
   }
  for (int i= 0; i< b2.size(); i++) {
-    //call object 1 by 1 and stores it as a local object
     FragileBrick fragileBrick = b2.get(i);
     if (fragileBrick.active) {
       fragileBrick.display();
