@@ -13,10 +13,14 @@ void setup() {
   background(0);
   for (int i = 0; i < xpa; i++) {
     for (int j = 0; j < ypa; j++) {
-      shape[i][j] = 50;
+      shape[i][j] = (int)map(i, 0, xpa, 0, 50); // rounding the decimal, makin it into a whole number
       colors[i][j] = map(i, 0, 10, j, 20);
     }
   }
+  
+}
+
+void draw() {
    for (int i = 0; i < xpa; i++) {
     for (int j = 0; j < ypa; j++) {
       float xPos = random(0, 600);
@@ -26,6 +30,7 @@ void setup() {
       rect(yPos, xPos, 5, shape[i][j]);
       fill(random(255), random(255), random(255));
       ellipse(xPos, yPos, 2, 2);
+      
 }
    }
 }
