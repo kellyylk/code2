@@ -1,5 +1,3 @@
-//I know this is a little simple, not sure what external data I would have used that'd
-//be convenient, promise I'll try to find another way to incorporate it next time! :<
 
 int state = 0;
 
