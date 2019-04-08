@@ -1,6 +1,4 @@
-//press key to change cities in Russia
-//color representation temperature
-//multiple lines starting from one place going to the next for wind direction
+
 String apiKey = "7b7acfd8f1aafab21720b68e6236cc45"; // YOUR API KEY HERE
 String city = "moscow";
 
