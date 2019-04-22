@@ -1,7 +1,5 @@
-
 int scene = 0;
 float offset = 0;
-float incr = 0.01;
 
 void setup() {
   size(800, 800, P3D);
@@ -178,8 +176,7 @@ text("After you exit the tunnel, you realize from your experiences", 20, 30);
 text("that even though life is nothingness, you can make your own meaning :)", 20, 50);
 break;
 
-  }
-  
+  } 
 }
 
 
