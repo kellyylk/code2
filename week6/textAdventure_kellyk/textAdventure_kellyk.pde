@@ -1,9 +1,11 @@
 //I tried putting this below in the setup & global area & saved my json data file in a folder,
 //but not sure why it doesn't work
 
- JSONArray texts;
+JSONObject json;
    
 int state = 0;
+
+Scene[] scenes;
 
 //String[] descriptions = {
 //  "You wake up in Code 2 class and don't know what is going on",
@@ -38,37 +40,51 @@ int state = 0;
 void setup() {
   size(600, 600);
   
- texts = loadJSONArray("data.json");
+  json = new JSONObject();
+  
+  json = loadJSONObject("data.json");
+  
+  JSONArray descriptions = json.getJSONArray("descriptions");
+  JSONArray options = json.getJSONArray("options");
+  JSONArray optionTargets = json.getJSONArray("optionTargets");
  
- for (int i = 0; i < texts.size(); i++) {
-JSONObject adv = texts.getJSONObject(i);
-int descriptions = adv.getInt("descriptions");
-String options = adv.getString("options");
-String optionTargets = adv.getString("optionTargets");
+ scenes = new Scene[descriptions.size()];
  
+ for (int i = 0; i < scenes.length; i++) {
+   scenes[i] = new Scene(descriptions.getString(i), options.getJSONArray(i), optionTargets.getJSONArray(i));
  }
- 
 }
+
 
 void draw() {
   background(255);
   textSize(40);
   fill(0);
-  text(descriptions[state], 40, 40, 350, 300); //calling string, starts with 0
+  text(scenes[state].displayText, 40, 40, 350, 300); //calling string, starts with 0
   
   textSize(18);
-  int i = 0;
-  for (String option : options[state]) {
-    text(option, 40, 450 + i * 50); 
-    i++;
+  for (int i = 0; i < scenes[state].options.size(); i++) {
+    text( i + 1, 30, 450 + i * 50);
+    text(scenes[state].options.getString(i), 70, 450 + i * 50);
   }
 }
 
 void keyPressed() {
-  
-  for (int i = 0; i < optionTargets[state].length; i++) {
+  for (int i = 0; i < scenes[state].optionTargets.size(); i++) {
     if (keyCode - 49 == i) {
-       state = optionTargets[state][i];
+       state = scenes[state].optionTargets.getInt(i);
     }
+  }
+}
+
+class Scene {
+  String displayText;
+  JSONArray options;
+  JSONArray optionTargets;
+  
+  Scene(String txt, JSONArray opt, JSONArray targets) {
+    displayText = txt;
+    options = opt;
+    optionTargets = targets;
   }
 }
