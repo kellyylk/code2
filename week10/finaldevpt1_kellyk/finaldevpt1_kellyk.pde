@@ -1,13 +1,13 @@
 //P3D Scenes
 int cols, rows;
 int scl = 20;
-int w = 300;
+int w = 800;
 int h = 800;
+float move;
 
 float speed = 0;
 float[][] terrain;
-float lmovement = 0;
-float rmovement = 0;
+
 void setup() {
   size(700, 700, P3D);
   cols = w / scl;
@@ -39,25 +39,8 @@ void draw() {
   //but not sure how to make it work smoothly w/ translate since it translates the previous translate
   //should I use the camera()? not sure how that works with left and right keys
   //only found an example for mouseX
-  if (key == CODED) {
-    if (keyCode == LEFT) {
-      lmovement += 1;
-      lmovement ++;
-     translate(lmovement, 300);
-     if (lmovement < -10);
-     translate(-10, 100);
-    }
-  }
-  
-  if (key == CODED) {
-    if (keyCode == RIGHT) {
-      rmovement += -1;
-      rmovement --;
-      translate(rmovement, 300);
-      if (rmovement > 700);
-    }
-    
-  }
+
+     translate(0, 300);
      rotateX(PI/3);
   for (int y = 0; y < rows -1; y++) {
     beginShape(TRIANGLE_STRIP);
@@ -71,21 +54,26 @@ void draw() {
 }
 popMatrix();
 
-  pushMatrix();
-     translate(400, 300);
-     rotateX(PI/3);
-  for (int y = 0; y < rows -1; y++) {
-    beginShape(TRIANGLE_STRIP);
-    for (int x = 0; x < cols; x++) {
-      vertex(x*scl, y * scl, terrain[x][y]); 
-      vertex(x*scl, (y+1) * scl, terrain[x][y+1]);
-     //need to pull vertices up after grids are made
-     //The Z value needs to chane
-    }
-    endShape();
-}
+//try to make 3D shapes moving along the river, when you click it, it disappears
+noStroke();
+lights();
+
+//catch the invaders
+//make a class
+//left keys and right, make size 0 when keys are pressed
+//Arraylist
+pushMatrix();
+move += move * 0.00001;
+translate(300, 400, 280 + move++);
+rotateY(radians(frameCount *0.5));
+sphere(5);
 popMatrix();
 
+pushMatrix();
+translate(400, 400, 280 + move++);
+rotateY(radians(frameCount *0.5));
+sphere(5);
+popMatrix();
 
 
 }

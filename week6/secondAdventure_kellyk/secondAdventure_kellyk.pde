@@ -1,12 +1,17 @@
-
 int state = 0;
 
+JSONObject json;
 void setup() {
   size(800, 800);
 }
 
 
 void draw() {
+  json = new JSONObject();
+  json = loadJSONObject("data.json");
+  
+  JSONArray narrative = json.getJSONArray("narrative");
+  
   background(255);
       switch (state) {
       case 0:
@@ -55,7 +60,6 @@ void draw() {
       text("press to start over", 100, 500);
       break;
       
-
       default: 
       break;
 
