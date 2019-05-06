@@ -176,6 +176,7 @@ break;
   //not done with this part yet but the exits are going to be clickable
   //5-10s to figure out which one it is
   background(0);
+  //used your example code for the flashlight part
   loadPixels();
   finalstage.loadPixels();
   for (int x = 0; x < finalstage.width; x++) {
