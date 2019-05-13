@@ -1,3 +1,29 @@
+Blocks[]block = new Blocks[10];
+
+void setup() {
+  background(0);
+  size(700, 700, P3D);
+  //block[19]= new Blocks(random(width), random(height));
+  for (int i = 0; i < block.length; i++) {
+    block[i] = new Blocks(random(width), random(height), random(-600, 400));
+  }
+}
+
+void draw() {
+background(0);
+  directionalLight(255, 150, 400, 400, 400, -1);
+  pointLight(255, 255, 190, 100, 100, 100);
+     for (int i = 0; i < block.length; i++) {
+    block[i].display();
+}
+//  for (int i = 0; i < 20; i++) {
+//    for (int j = 0; j < 20; j++) {
+//  block[19].display();
+//}
+//}
+
+}
+
 class Blocks {
   float move = random(-600, 400);
   float xposition;
