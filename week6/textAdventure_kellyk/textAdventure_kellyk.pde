@@ -1,6 +1,3 @@
-//I tried putting this below in the setup & global area & saved my json data file in a folder,
-//but not sure why it doesn't work
-
 JSONObject json;
    
 int state = 0;
@@ -31,7 +28,7 @@ void draw() {
   background(255);
   textSize(40);
   fill(0);
-  text(scenes[state].displayText, 40, 40, 350, 300); //calling string, starts with 0
+  text(scenes[state].displayText, 40, 40, 350, 300); 
   
   textSize(18);
   for (int i = 0; i < scenes[state].options.size(); i++) {
