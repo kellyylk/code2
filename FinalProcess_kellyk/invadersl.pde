@@ -30,8 +30,7 @@ class InvadersL {
     if (moveone > 1000) {
       state = 11;
     }
-  }
-    void keyPressed() {
+
       if (key == CODED) {
         if (keyCode == LEFT) {
           invaderLypos = -400;
@@ -39,6 +38,7 @@ class InvadersL {
         }
       }
     }
+}
   //  if (key == CODED) {
   //    if (keyCode == LEFT) {
   //      invaderLypos = -400;
@@ -50,4 +50,3 @@ class InvadersL {
   //  }
   //  println(moveone);
   //}
-}

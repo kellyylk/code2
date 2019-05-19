@@ -250,11 +250,11 @@ void draw() {
     popMatrix();
     for (int i = 0; i < invaderl.length; i++) {
       invaderl[i].display();
-      invaderl[i].keyPressed();
+      //invaderl[i].keyPressed();
     }
     for (int i = 0; i < invaderl.length; i++) {
       invaderr[i].display();
-      invaderr[i].keyPressed();
+      //invaderr[i].keyPressed();
     }
     break;
 

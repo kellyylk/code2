@@ -28,8 +28,7 @@ class InvadersR {
     if (moveone > 1000) {
       state = 11;
     }
-  }
-  void keyPressed() {
+
     if (key == CODED) {
       if (keyCode == RIGHT) {
         invaderRypos = -400;
